@@ -1,32 +1,27 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-10 offset-1'>
-    <h1 class='mt-4 border-bottom border-secondry'>管理者トップ画面</h1>
+<%= render 'layouts/error_messages', obj:@notice_new %>
+<h1>管理者トップ画面</h1>
 
-    <h2 class='mt-4 border-bottom border-secondry'>お知らせ作成</h2>
+<h2>お知らせ作成</h2>
+<%= form_for(@notice_new, url: admins_notices_path) do |f| %>
 
-    <%= form_for(@notice_new, url: admins_notices_path) do |f| %>
-    <%= render 'layouts/error_messages', obj:@notice_new %>
-
-    <div class='my-3 field'>
-	    <%= f.label :タイトル, class: 'col-3 text-center' %>
-	    <%= f.text_field :title, class: 'col-8 title' %>
-    </div>
-
-    <div class='my-3 field'>
-	   <%= f.label :内容, class: 'col-3 text-center' %>
-	   <%= f.text_area :text, class: 'col-8 text' %>
-    </div>
-
-    <div class='actions'>
-	    <%= f.submit '変更', class:'col-8 offset-3 btn btn-success btn-block' %>
-    </div><br>
-
-    <% end %>
-
-    <h3 class='my-5 text-center' >ユーザー数<%= @users.count %>人</h3>
-    <h3 class='my-5 text-center'>家電情報数<%= @appliances.count %>件</h3>
-    <h3 class='my-5 text-center'>カテゴリ数<%= @categories.count %>個</h3>
-    </div>
-  </div>
+<div class='field'>
+	<%= f.label :タイトル %>
+	<%= f.text_field :title, class: 'title' %>
 </div>
+
+<div class='field'>
+	<%= f.label :内容 %>
+	<%= f.text_area :text, class: 'text' %>
+</div>
+
+<div class='actions'>
+	  <%= f.submit '登録' %>
+</div>
+
+<% end %>
+
+<h3>ユーザー数<%= @users.count %>人</h3>
+
+<h3>家電情報投稿数<%= @appliances.count %>件</h3>
+
+<h3>カテゴリ数<%= @categories.count %>個</h3>

@@ -1,61 +1,23 @@
-<div class='container'>
-	<h1 class='my-4 border-bottom border-secondry'>検索結果</h1>
-  <div class='row'>
+<h1><strong>検索結果</strong></h1><br>
+<% if @appliance_or_user == "1" %>
 
-    <% if @appliance_or_user == "1" %>
-    <h2 class='my-4 border-bottom border-secondry'>家電検索一覧</h2>
-      <table class="table table-bordered table-hover text-center">
-	      <thead >
-		      <tr>
-			      <th>家電画像</th>
-			      <th>カテゴリ名</th>
-			      <th>メーカー</th>
-			      <th>製品名</th>
-			      <th>詳細内容</th>
-          </tr>
-	      </thead>
-	      <tbody>
-          <% @appliances.each do |appliance| %>
-          <tr>
-	          <td>
-               <%= link_to appliances_path(appliance.id) do %>
-               <%= attachment_image_tag appliance, :image, :fill, 50, 50, fallback: 'none_image.jpg', size:'50x50' %>
-               <% end %>
-            </td>
-            <td><%= appliance.category.category_name %></td>
-            <td><%= appliance.maker %></td>
-            <td><%= appliance.product %></td>
-            <td><%= link_to '詳細',appliance_path(appliance.id), class:'btn btn-outline-success' %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table><br>
+<h2>家電検索一覧</h2><br>
+<% @appliances.each do |appliance| %>
+<%= attachment_image_tag(appliance, :image, :fill, 100, 100, fallback: 'no_image.jpg', size:'100x100') %>
+<%= appliance.user.user_name %>
+<%= appliance.category.category_name %>
+<%= appliance.maker %>
+<%= appliance.product %>
+<%= link_to '詳細', appliance_path(appliance.id) %>
+<% end %>
 
-    <% else @appliance_or_user == "2" %>
-    <h2 class='my-4 border-bottom border-secondry'>ユーザー検索一覧</h2>
-      <table class="table table-bordered table-hover text-center">
-	      <thead >
-		      <tr>
-			      <th>ユーザーID</th>
-			      <th>プロフィール画像</th>
-			      <th>ユーザーネーム</th>
-			      <th>詳細内容</th>
-          </tr>
-	      </thead>
-	      <tbody>
-          <% @users.each do |user| %>
-          <tr>
-          	<td><%= user.id %></td>
-	          <td>
-　　　　　　　　<%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: 'no_image.jpg', size:'50x50') %>
-            </td>
-            <td><%= user.user_name %></td>
-            <td><%= link_to '詳細', user_path(user.id), class:'btn btn-outline-success' %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table><br>
+<% else @appliance_or_user == "2" %>
+<h2>ユーザー検索一覧</h2><br>
+<% @users.each do |user| %>
+<%= user.id %>
+<%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: 'no_image.jpg', size:'100x100') %>
+<%= user.user_name %>
+<%= link_to '詳細', user_path(user.id) %>
+<% end %>
 
-      <% end %>
-  </div>
-</div>
+<% end %>

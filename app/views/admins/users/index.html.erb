@@ -1,29 +1,9 @@
-<div class='container'>
-	<h1 class='my-4 border-bottom border-secondry'>ユーザーの一覧</h1>
-  　<div class='row'>
-      <table class="table table-bordered table-hover text-center">
-	      <thead >
-		      <tr>
-			      <th>ユーザーID</th>
-			      <th>プロフィール画像</th>
-			      <th>ユーザーネーム</th>
-			      <th>メールアドレス</th>
-			      <th>詳細内容</th>
-          </tr>
-	      </thead>
-	      <tbody>
-          <% @users.each do |user| %>
-          <tr>
-          	<td><%= user.id %></td>
-	          <td>
-　　　　　　　　<%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: 'no_image.jpg', size:'50x50') %>
-            </td>
-            <td><%= user.user_name %></td>
-            <td><%= user.email %></td>
-            <td><%= link_to '詳細', admins_user_path(user), class:'btn btn-outline-success' %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table><br>
-   </div>
-</div>
+<h1>ユーザーの一覧</h1>
+
+<% @users.each do |user| %>
+<%= user.id %>
+<%= attachment_image_tag(user, :profile_image, :fill, 100, 100, fallback: 'no_image.jpg', size:'100x100') %>
+<%= user.user_name %>
+<%= user.email %>
+<%= link_to '詳細', admins_user_path(user) %>
+<% end %>

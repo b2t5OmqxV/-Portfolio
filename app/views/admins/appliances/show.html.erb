@@ -1,79 +1,15 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-10 offset-1'>
-    <h1 class='mt-3 border-bottom border-secondry'>家電情報詳細</h1>
-      <table class='mb-5 table'>
-        <thead>
-          <tr>
-	          <th>カテゴリ</th>
-	          <th><%= @appliance.category.category_name %></th>
-	        </tr>
-	        <tr>
-	          <th>家電画像</th>
-	          <th><%= attachment_image_tag(@appliance, :image, :fill, 50, 50, fallback: 'none_image.jpg', size:'50x50') %></th>
-	        </tr>
-	        <tr>
-	          <th>メーカー</th>
-	          <th><%= @appliance.maker %></th>
-	        </tr>
-	        <tr>
-	          <th>品名</th>
-	          <th><%= @appliance.product %></th>
-	        </tr>
-	        <tr>
-	          <th>型番</th>
-	          <th><%= @appliance.model %></th>
-	        </tr>
-	        <tr>
-	          <th>購入金額</th>
-	          <th><%= @appliance.purchase_amount %></th>
-	        </tr>
-	        <tr>
-	          <th>購入日</th>
-	          <th><%= @appliance.purchase_day %></th>
-	        </tr>
-	        <tr>
-	          <th>メーカー保証終了日</th>
-	          <th><%= @appliance.warranty_period %></th>
-	        </tr>
-	        <tr>
-	          <th>稼働開始日</th>
-	          <th><%= @appliance.start_operation %></th>
-	        </tr>
-　　　　　　<tr>
-	          <th>有効寿命日</th>
-	          <th><%= @appliance.useful_life %></th>
-	        </tr>
-          <tr>
-	          <th>使用場所</th>
-	          <th><%= @appliance.place %></th>
-	        </tr>
-　　　　　　<tr>
-	          <th>使用頻度</th>
-	          <th><%= @appliance.frequency %></th>
-	        </tr>
-          <tr>
-	          <th>詳細内容</th>
-	          <th><%= @appliance.detail %></th>
-	        </tr>
-	        <tr>
-	          <th>登録日</th>
-	          <th><%= @appliance.created_at.strftime('%Y/%m/%d') %></th>
-	        </tr>
-	        <tr>
-	          <th>更新日</th>
-	          <th><%= @appliance.updated_at.strftime('%Y/%m/%d') %></th>
-	        </tr>
-	        <tr>
-	          <th></th>
-	          <th><%= link_to '編集する', edit_admins_appliance_path, class:'btn btn-outline-primary' %></th>
-	        </tr>
-	        <tr>
-	          <th></th>
-	          <th><%= link_to '削除する', admins_appliance_path(@appliance.id), method: :delete, class:'btn btn-outline-danger' %></th>
-	        </tr>
-        </thead>
-      </table>
-    </div>
-  </div>
-</div>
+<h1>家電情報詳細</h1>
+<%= @appliance.category.category_name %>
+<%= attachment_image_tag(@appliance, :image, :fill, 100, 100, fallback: 'none_image.jpg', size:'100x100') %>
+<%= @appliance.maker %>
+<%= @appliance.product %>
+<%= @appliance.model %>
+<%= @appliance.purchase_amount %>
+<%= @appliance.purchase_day %>
+<%= @appliance.warranty_period %>
+<%= @appliance.start_operation %>
+<%= @appliance.useful_life %>
+<%= @appliance.place %>
+<%= @appliance.frequency %>
+<%= link_to '編集する', edit_admins_appliance_path %>
+<%= link_to '削除する', admins_appliance_path(@appliance.id), method: :delete %>

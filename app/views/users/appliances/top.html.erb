@@ -1,25 +1,23 @@
 <div class='container'>
   <div class='row'>
-
     <div class='col-4'>
       <%= link_to '新規投稿', new_appliance_path, class:'my-4 btn btn-success btn-block' %>
       <h2 class='border-bottom border text-center bg-warning'>カテゴリ</h2>
         <div class='mb-5 list-group'>
         <% @categories.each do |category| %>
           <%= link_to ({controller: 'users/appliances', action: 'index', id: category.id }) do %>
-            <div class='list-group-item list-group-item-action text-center'><%= category.category_name %></div>
+          <div class='list-group-item list-group-item-action text-center'><%= category.category_name %></div>
           <% end %>
         <% end %>
         </div>
     </div>
 
     <div class='col-8'>
-      <div class='my-3 card'>
+      <div class='my-3 card'> 
         <%= image_tag 'top.jpg', class:'image-filed' %>
         <h2 class='my-4 border-bottom border-secondry text-center' >ようこそ、家電ChangeRecorderへ</h2>
         <p class='text-center'>家電製品の購入日や稼働開始日を登録すると保証期限や有効寿命が経過する前に通知を行い、<br>他の利用者の投稿内容や稼働期間を閲覧できることで買い替え時の参考にできるサイトです。</p>
       </div>
-
       <div class='col-12'>
       <h2 class='my-4 border-bottom border-secondry text-center'>お知らせ</h2>
       <table class='table table-hover'>

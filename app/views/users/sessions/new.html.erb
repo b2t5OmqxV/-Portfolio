@@ -2,29 +2,29 @@
   <div class='row'>
     <div class='col-10 offset-1'>
       <h2 class='my-4 border-bottom border-secondry'>ログイン</h2>
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-        <div class="col-3 mt-2 field">
-          <%= f.label :メールアドレス %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-        <div class="col-3 mt-2 field">
-          <%= f.label :パスワード %><br />
-          <%= f.password_field :password, autocomplete: "current-password" %>
-        </div>
+      <div class="col-3 mt-2 field">
+        <%= f.label :メールアドレス %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      </div>
 
-        <div class="col-3 my-4 actions">
-          <%= f.submit "ログイン", class:'btn btn-success btn-block'%>
-        </div>
+      <div class="col-3 mt-2 field">
+        <%= f.label :パスワード %><br />
+        <%= f.password_field :password, autocomplete: "current-password" %>
+      </div>
 
-        <% end %>
+      <div class="col-3 my-4 actions">
+        <%= f.submit "ログイン", class:'btn btn-success btn-block'%>
+      </div>
+      <% end %>
 
-        <%= link_to '※パスワードを忘れた方はこちらへ', new_user_password_path, class:'m-2 btn btn-outline-primary'%>
+      <%= link_to '※パスワードを忘れた方はこちらへ', new_user_password_path, class:'m-2 btn btn-outline-primary'%>
 
       <h2 class='my-4 border-bottom border-secondry' >初めてご利用の方はこちらへ</h2>
 
-        <%= link_to '新規登録', new_user_registration_path, class:'col-2 m-2 btn btn-outline-success btn-block' %><br>
+      <%= link_to '新規登録', new_user_registration_path, class:'col-2 m-2 btn btn-outline-success btn-block' %><br>
 
     </div>
   </div>

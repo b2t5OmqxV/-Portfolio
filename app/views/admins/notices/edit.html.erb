@@ -1,26 +1,20 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-10 offset-1'>
-    <h1 class='mt-4 border-bottom border-secondry'>お知らせ編集</h1>
+<%= render 'layouts/error_messages', obj:@notice %>
+<h1>お知らせ編集</h1>
 
-    <%= form_for(@notice, url: admins_notice_path(@notice.id)) do |f| %>
-    <%= render 'layouts/error_messages', obj:@notice %>
+<%= form_for(@notice, url: admins_notice_path(@notice.id)) do |f| %>
 
-    <div class='my-3 field'>
-	    <%= f.label :タイトル, class: 'col-3 text-center' %>
-	    <%= f.text_field :title, class: 'col-8 title' %>
-    </div>
-
-    <div class='my-3 field'>
-	   <%= f.label :内容, class: 'col-3 text-center' %>
-	   <%= f.text_area :text, class: 'col-8 text' %>
-    </div>
-
-    <div class='actions'>
-	    <%= f.submit '変更', class:'col-8 offset-3 btn btn-success btn-block' %>
-    </div><br>
-
-    <% end %>
-    </div>
-  </div>
+<div class='field'>
+	<%= f.label :タイトル %>
+	<%= f.text_field :title, class: 'title' %>
 </div>
+
+<div class='field'>
+	<%= f.label :内容 %>
+	<%= f.text_area :text, class: 'text' %>
+</div>
+
+<div class='actions'>
+	  <%= f.submit '変更' %>
+</div>
+
+<% end %>

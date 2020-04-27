@@ -1,31 +1,10 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-10 offset-1'>
-    <%= link_to 'お知らせ作成', admins_top_path, class:'mt-4 btn btn-success btn-block' %>
-    <h1 class='mt-4 border-bottom border-secondry'>お知らせ一覧</h1>
-      <table class='my-5 table table-hover'>
-        <thead>
-          <tr>
-          	<th>お知らせID</th>
-	          <th>通知日</th>
-	          <th>タイトル</th>
-	          <th>詳細内容</th>
-	          <th colspan="2"></th>
-          </tr>
-        </thead>
-        <tbody>
-        	<% @notices.each do |notice| %>
-        	<tr>
-        	  <td><%= notice.id %></td>
-            <td><%= notice.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= notice.title %></td>
-            <td><%= notice.text %></td>
-            <td><%= link_to '編集',edit_admins_notice_path(notice.id), class:'btn btn-outline-primary' %></td>
-            <td><%= link_to '削除',admins_notice_path(notice.id), method: :delete, class:'btn btn-outline-danger' %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div>
+<h1>お知らせ一覧</h1>
+<%= link_to 'お知らせ作成', admins_top_path %>
+
+<% @notices.each do |notice| %>
+<%= notice.id %>
+<%= notice.created_at %>
+<%= notice.title %>
+<%= link_to '詳細',admins_notice_path(notice.id) %>
+<%= link_to '編集',edit_admins_notice_path(notice.id) %>
+<% end %>

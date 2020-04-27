@@ -1,45 +1,36 @@
-<div class='container'>
-	<h1 class='my-4 border-bottom border-secondry'>ユーザー情報編集</h1>
-  <div class='row'>
-    <div class='col-10 offset-1'>
-      <%= form_for(@user, url: admins_user_path) do |f| %>
-      <%= render 'layouts/error_messages', obj:@user %>
+<%= render 'layouts/error_messages', obj:@user %>
+<h1>ユーザー情報編集</h1>
+<%= form_for(@user, url: admins_user_path) do |f| %>
 
-      <div class='col-3 offset-1 my-3'>
-        <%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: 'no_image.jpg', size:'100x100') %>
-      </div>
+<%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: 'no_image.jpg', size:'100x100') %>
 
-      <div class='my-3 field'>
-	      <%= f.label :プロフィール画像, class: 'col-3 text-center' %>
-	      <%= f.attachment_field :profile_image, class: 'col-6 user_profile_image' %>
-      </div>
-
-      <div class='my-3 field'>
-	      <%= f.label :ユーザーネーム, class: 'col-3 text-center' %>
-	      <%= f.text_field :user_name, class: 'col-6 user_name' %>
-      </div>
-
-      <div class='my-3 field'>
-        <%= f.label :メールアドレス, class: 'col-3 text-center' %>
-        <%= f.text_field :email, class: 'col-6 email' %>
-      </div>
-
-      <div class='my-3 field'>
-	      <%= f.label :自己紹介, class: 'col-3 text-center' %>
-	      <%= f.text_area :introduction, class: 'col-6 introduction' %>
-      </div>
-
-      <div class='field'>
-        <%= f.label :性別, class: 'col-3 text-center' %>
-        <%= f.select :gender, ['無回答', '男性', '女性'], class: 'col-2 gender' %>
-      </div>
-
-      <div class='actions'>
-	      <%= f.submit '編集内容を保存する', class:'col-6 offset-3 btn btn-success btn-block' %>
-      </div><br>
-
-      <% end %>
-
-    </div>
-  </div>
+<div class='field'>
+	<%= f.label :プロフィール画像 %>
+	<%= f.attachment_field :profile_image, class: 'user_profile_image' %>
 </div>
+
+<div class='field'>
+	<%= f.label :ユーザーネーム %>
+	<%= f.text_field :user_name, class: 'user_name' %>
+</div>
+
+<div class='field'>
+  <%= f.label :メールアドレス %>
+  <%= f.text_field :email, class: 'email' %>
+</div>
+
+<div class='field'>
+	<%= f.label :自己紹介 %>
+	<%= f.text_area :introduction, class: 'introduction' %>
+</div>
+
+<div class='field'>
+    <%= f.label :性別 %>
+    <%= f.select :gender, ['無回答', '男性', '女性'], class: 'gender' %>
+</div>
+
+<div class='actions'>
+	  <%= f.submit '編集内容を保存する' %>
+</div>
+
+<% end %>

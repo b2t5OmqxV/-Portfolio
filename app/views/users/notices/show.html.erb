@@ -11,14 +11,11 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td><%= @notices.created_at.strftime('%Y/%m/%d') %></td>
-            <td><%= @notices.title %></td>
-            <td><%= @notices.text %></td>
-          </tr>
+          <td><%= @notices.created_at.strftime('%Y/%m/%d') %></td>
+          <td><%= @notices.title %></td>
+          <td><%= @notices.text %></td>
         </tbody>
       </table>
-
       <div class='row'>
         <%= link_to 'TOPへ戻る', :back, class:'m-3 btn btn-outline-primary' %>
       </div>

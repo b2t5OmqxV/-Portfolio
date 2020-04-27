@@ -1,81 +1,71 @@
-<div class='container'>
-  <div class='row'>
-    <div class='col-10 offset-1'>
-    <h1 class='mt-3 border-bottom border-secondry' >家電情報編集</h1>
+<%= render 'layouts/error_messages', obj:@appliance %>
+<h1>家電情報編集</h1>
+<%= form_for(@appliance, url: admins_appliance_path) do |f| %>
 
-    <%= form_for(@appliance, url: admins_appliance_path) do |f| %>
-    <%= render 'layouts/error_messages', obj:@appliance %>
+<%= attachment_image_tag(@appliance, :image, :fill, 100, 100, fallback: 'none_image.jpg', size:'100x100') %>
 
-    <div class='col-3 offset-2 my-3'>
-      <%= attachment_image_tag(@appliance, :image, :fill, 100, 100, fallback: 'none_image.jpg', size:'100x100') %>
-    </div>
-
-    <div class='my-3 field'>
-      <%= f.label :カテゴリ, class: 'col-2 text-center' %>
-      <%= f.collection_select :category_id, Category.all, :id, :category_name, class: 'category' %>
-    </div>
-
-    <div class ='my-3 field'>
-      <%= f.label :家電画像, class: 'col-2 text-center' %>
-      <%= f.attachment_field :image, class: 'col-6 image' %>
-    </div>
-
-    <div class='my-3 field'>
-      <%= f.label :メーカー, class: 'col-2 text-center' %>
-      <%= f.text_field :maker, class: 'col-6 maker' %>
-    </div>
-
-    <div class='my-3 field'>
-      <%= f.label :品名, class: 'col-2 text-center' %>
-      <%= f.text_field :product, class: 'col-6 product' %>
-    </div>
-
-    <div class='my-3 field'>
-      <%= f.label :型番, class: 'col-2 text-center' %>
-      <%= f.text_field :model, class: 'col-6 model' %>
-    </div>
-
-    <div class='my-3 field'>
-      <%= f.label :購入金額, class: 'col-2 text-center' %>
-      <%= f.text_field :purchase_amount, class: 'col-3 purchase_amount' %>
-    </div>
-
-    <div class='my-3 field'>
-      <%= f.label :購入日, class: 'col-2 text-center' %>
-      <%= f.date_field :purchase_day, class: 'col-3 purchase_day' %>
-    </div>
-
-    <div class='my-3 field'>
-      <%= f.label :保証期間終了日, class: 'col-2 text-center' %>
-      <%= f.date_field :warranty_period, class: 'col-3 warranty_period' %>
-    </div>
-
-    <div class='my-3 field'>
-      <%= f.label :稼働開始日, class: 'col-2 text-center' %>
-      <%= f.date_field :start_operation, class: 'col-3 start_operation' %>
-    </div>
-
-    <div class='my-3 field'>
-      <%= f.label :使用場所, class: 'col-2 text-center' %>
-      <%= f.select :place, ['屋内', '屋外', '携帯', '車内'], class: 'col-3 place' %>
-    </div>
-
-    <div class='my-3 field'>
-      <%= f.label :使用頻度, class: 'col-2 text-center' %>
-      <%= f.select :frequency, ['ほぼ毎日(年中)', '週に2〜3日', '月に1~2日程度','半年程度', '3~4ヶ月程度', '1~2ヶ月程度', '年に1日程度'], class: 'col-6 frequency' %>
-    </div>
-
-    <div class='my-3 field'>
-	    <%= f.label :詳細内容, class: 'col-2 text-center' %>
-	    <%= f.text_area :detail, class: 'col-3 detail' %>
-    </div>
-
-    <div class='my-5 actions'>
-	    <%= f.submit '変更を保存する', class:'btn btn-success btn-block' %>
-    </div>
-
-    <% end %>
-
-    </div>
-  </div>
+<div class='field'>
+  <%= f.label :カテゴリ %>
+  <%= f.collection_select :category_id, Category.all, :id, :category_name, class: 'category' %>
 </div>
+
+<div class='field'>
+  <%= f.label :家電画像 %>
+  <%= f.attachment_field :image, class: 'image' %>
+</div>
+
+<div class='field'>
+  <%= f.label :メーカー %>
+  <%= f.text_field :maker, class: 'maker' %>
+</div>
+
+<div class='field'>
+  <%= f.label :品名 %>
+  <%= f.text_field :product, class: 'product' %>
+</div>
+
+<div class='field'>
+  <%= f.label :型番 %>
+  <%= f.text_field :model, class: 'model' %>
+</div>
+
+<div class='field'>
+  <%= f.label :購入金額 %>
+  <%= f.text_field :purchase_amount, class: 'purchase_amount' %>
+</div>
+
+<div class='field'>
+  <%= f.label :購入日 %>
+  <%= f.date_field :purchase_day, class: 'purchase_day' %>
+</div>
+
+<div class='field'>
+  <%= f.label :メーカー保証終了日 %>
+  <%= f.date_field :warranty_period, class: 'warranty_period' %>
+</div>
+
+<div class='field'>
+  <%= f.label :稼働開始日 %>
+  <%= f.date_field :start_operation, class: 'start_operation' %>
+</div>
+
+<div class='field'>
+    <%= f.label :使用場所 %>
+    <%= f.select :place, ['屋内', '屋外', '携帯', '車内'], class: 'place' %>
+</div>
+
+<div class='field'>
+    <%= f.label :使用頻度 %>
+    <%= f.select :frequency, ['ほぼ毎日(年中)', '週に2〜3日', '月に1~2日程度','半年程度', '3~4ヶ月程度', '1~2ヶ月程度', '年に1日程度'], class: 'frequency' %>
+</div>
+
+<div class='field'>
+	<%= f.label :詳細内容 %>
+	<%= f.text_area :detail, class: 'detail' %>
+</div>
+
+<div class='actions'>
+	  <%= f.submit '変更を保存する' %>
+</div>
+
+<% end %>
