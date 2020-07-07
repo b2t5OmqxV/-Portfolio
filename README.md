@@ -2,7 +2,7 @@
 
 **家電 ChangeRecorder** 
 
-## サイト概要(Site overview)
+# サイト概要(Site overview)
 
 ### サイトテーマ(Site theme)
 
